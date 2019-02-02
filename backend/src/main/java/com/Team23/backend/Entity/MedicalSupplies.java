@@ -11,14 +11,13 @@ import lombok.Data;
 
 @Entity
 @Data
+
 public class MedicalSupplies {
     @Id  
     @GeneratedValue(strategy= GenerationType.IDENTITY) 
     private Long medicalsuppliesId;
     private String medicalsuppliesName;
 
-
-    
     @ManyToOne()
     @JoinColumn(name="medicalInstrumentId")
     private MedicalInstrument medicalInstrument;
@@ -27,10 +26,11 @@ public class MedicalSupplies {
     @JoinColumn(name="useabilityId")
     private Useability useability;
 
+    public MedicalSupplies(){}
     public Long findById(long medicalsuppliesId){
         return this.medicalsuppliesId=medicalsuppliesId;
     }
-    public String deleteByMedicalInstrumentName(String medicalsuppliesName){
+    public String deleteByMedicalsuppliesName(String medicalsuppliesName){
         return this.medicalsuppliesName=medicalsuppliesName;
     }
 }
