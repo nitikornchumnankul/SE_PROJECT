@@ -5,10 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import lombok.*;
 
-
-
 @Entity
 @Data
+
 public class MedicalInstrument{
     @Id  //  Annotations  @Id  บอกว่าเป็น  Primary  key
     @SequenceGenerator(name="medicalinsturment_seq",sequenceName="medicalinsturment_seq")
@@ -17,6 +16,5 @@ public class MedicalInstrument{
     private Long medicalInstrumentId;
     private String  medicalInstrumentName;
 
-
-   
+    public MedicalInstrument(){}
 }
