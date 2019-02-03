@@ -18,7 +18,7 @@ public class MedicalSupplies {
     private Long medicalsuppliesId;
     private String medicalsuppliesName;
 
-    @ManyToOne()
+    @ManyToOne()    
     @JoinColumn(name="medicalInstrumentId")
     private MedicalInstrument medicalInstrument;
 

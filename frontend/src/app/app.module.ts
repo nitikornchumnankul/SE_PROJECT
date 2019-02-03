@@ -64,6 +64,8 @@ import { ReloadpageComponent } from './reloadpage/reloadpage.component';
 import { TreatmentHistoryComponent } from './treatment-history/treatment-history.component';
 import { AddMidicineComponent } from './add-midicine/add-midicine.component';
 import { EditMidicineComponent } from './edit-midicine/edit-midicine.component';
+import { MedicalSuppliesComponent } from './medical-supplies/medical-supplies.component';
+import { EditMedicalSuppliesComponent } from './edit-medical-supplies/edit-medical-supplies.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +85,8 @@ import { EditMidicineComponent } from './edit-midicine/edit-midicine.component';
     AddMidicineComponent,
     EditMidicineComponent,
     GDCardComponent,
+    MedicalSuppliesComponent,
+    EditMedicalSuppliesComponent,
   ],
   imports: [
     BrowserModule,
