@@ -137,7 +137,7 @@ import { EditMedicalSuppliesComponent } from './edit-medical-supplies/edit-medic
     MatDialogModule
   ],
   providers: [AuthService, AuthGuard,Opensheet,GoldcardService,AlertService],
-  entryComponents: [SheetComponent,Opensheet,EditMidicineComponent],
+  entryComponents: [SheetComponent,Opensheet,EditMidicineComponent,EditMedicalSuppliesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
