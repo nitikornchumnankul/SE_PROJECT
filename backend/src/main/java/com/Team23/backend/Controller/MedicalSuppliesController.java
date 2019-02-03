@@ -59,7 +59,6 @@ public class MedicalSuppliesController {
         System.out.println(medicalSupplies);
         System.out.println(medicalInstrument);
         System.out.println(useability);
-
         return  medicalSuppliesRepository.save(medicalSupplies);
     }
     @PutMapping("/MedicalSupplies/{medicalsuppliesId}/{medicalsuppliesName}/{medicalInstrumentName}/{useabilityName}")
