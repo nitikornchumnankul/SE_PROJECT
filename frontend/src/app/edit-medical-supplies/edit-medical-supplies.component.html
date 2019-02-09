@@ -2,13 +2,41 @@
   <h1 class="example-form">Edit Medical Supplies</h1>
 </mat-card>
 <mat-card class="background-image-matcart">
-  <!-----------------------------------ชื่อเวชภัณฑ์----------------------------------------------->
-  <form class="example-form">
+  <!-----------------------------------รหัสเวชภัณฑ์----------------------------------------------->
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="view.codeNumber" name="codeNumber" placeholder="รหัสเวชภัณฑ์">
+  </mat-form-field>
+</form>
+<!---------------------------------------------------------------------------------->
+<!-----------------------------------หมายเลขรุ่น----------------------------------------------->
+<form class="example-form">
     <mat-form-field class="example-full-width">
-      <input matInput [(ngModel)]="view.medicalSupplies" name="medicalSupplies" placeholder="ชื่อเวชภัณฑ์">
+      <input matInput [(ngModel)]="view.modelNumber" name="modelNumber" placeholder="หมายเลขรุ่น">
     </mat-form-field>
   </form>
-  <!---------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------->
+<!-----------------------------------ชื่อเวชภัณฑ์----------------------------------------------->
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="view.medicalSupplies" name="medicalSupplies" placeholder="ชื่อเวชภัณฑ์">
+  </mat-form-field>
+</form>
+<!---------------------------------------------------------------------------------->
+<!-----------------------------------ชื่อแบรนด์----------------------------------------------->
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="view.brandName" name="brandName" placeholder="ชื่อแบรนด์">
+  </mat-form-field>
+</form>
+<!---------------------------------------------------------------------------------->
+
+<!-----------------------------------คุณสมบัติ----------------------------------------------->
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="view.properties" name="properties" placeholder="คุณสมบัติ">
+  </mat-form-field>
+</form>
   <!--
 <mat-select [(ngModel)]="view.position" name="position" placeholder="ตำแหน่ง">
   <mat-option *ngFor="let position(นำค่าที่ได้มาใส่ position) of Position(ดึงมาจาก tyscrip)" [value]="(ชื่อจาก Position มาใส่ position)position.position(ชื่อจาก database)">

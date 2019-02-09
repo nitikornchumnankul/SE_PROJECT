@@ -2,16 +2,20 @@ import { Component, OnInit ,ViewChild} from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs/internal/Observable';
-import { MatDialog, MatDialogConfig } from "@angular/material";
+import { MatDialog, MatDialogConfig, MatTableDataSource } from "@angular/material";
 
 import { MedicalsuppliesService } from '../medicalsupplies.service';
 import { HttpClient } from '@angular/common/http';
 import { EditMedicalSuppliesComponent } from '../edit-medical-supplies/edit-medical-supplies.component';
 
-
 export interface MedicalSupplies{
 medicalsuppliesId:number;
+codeNumber:String;
 medicalsuppliesName:String;
+brandName:String;
+modelNumber:String;
+properties:String;
+
   medicalInstrument:{
     medicalInstrumentName:String;
   }
@@ -19,16 +23,16 @@ medicalsuppliesName:String;
     useabilityName:String;
   }
 }
-export class MatTableDataSource extends DataSource<any>{
+// export class MatTableDataSource extends DataSource<any>{
   
-  constructor(private medicalsuppliesService:MedicalsuppliesService){
-    super();
-  }
-  connect(): Observable<MedicalSupplies[]>{
-    return this.medicalsuppliesService.getShow();
-  }
-  disconnect(){}
-}
+//   constructor(private medicalsuppliesService:MedicalsuppliesService){
+//     super();
+//   }
+//   connect(): Observable<MedicalSupplies[]>{
+//     return this.medicalsuppliesService.getShow();
+//   }
+//   disconnect(){}
+// }
 
 @Component({
   selector: 'app-medical-supplies',
@@ -36,16 +40,23 @@ export class MatTableDataSource extends DataSource<any>{
   styleUrls: ['./medical-supplies.component.css']
 })
 export class MedicalSuppliesComponent implements OnInit {
-  displayedColumns: string[] = ['medicalsuppliesId', 'medicalsuppliesName', 'medicalInstrument','useability',"actions"];
+  displayedColumns: string[] = ['medicalsuppliesId','codeNumber','modelNumber', 'medicalsuppliesName','brandName','properties','medicalInstrument','useability',"actions"];
   dataSource = new MatTableDataSource(this.medicalsuppliesService);
+  filter : '';
   drug: Array<any>;//คืออะไร
+  dataSource = new MatTableDataSource<DrugElement>(this.drug);
+
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 MedicalSupplies: Array<any>;
 MedicalInstrument:Array<any>
 Useability:Array<any>;
 view: any={
+  codeNumber:null,
+  modelNumber:null,
   medicalSupplies:null,
+  brandName:null,
+  properties:null,
   medicalInstrument:null,
   useability:null
 }
@@ -68,11 +79,20 @@ constructor(private medicalsuppliesService:MedicalsuppliesService, private httpC
 
   }
   onSave(){
+    console.log(this.view.codeNumber);
+    console.log(this.view.modelNumber);
     console.log(this.view.medicalSupplies);
+    console.log(this.view.brandName);
+    console.log(this.view.properties);
     console.log(this.view.medicalInstrument);
     console.log(this.view.useability);
     
-    this.httpClient.post('http://localhost:8080/MedicalSupplies/'+ this.view.medicalSupplies + '/'+ this.view.medicalInstrument +
+    this.httpClient.post('http://localhost:8080/MedicalSupplies/'+ this.view.codeNumber +  
+    '/'+ this.view.modelNumber + 
+    '/'+ this.view.medicalSupplies +
+    '/'+ this.view.brandName + 
+    '/'+ this.view.properties + 
+    '/'+ this.view.medicalInstrument +
     '/'+ this.view.useability,this.view)
     .subscribe
     (
@@ -83,7 +103,7 @@ constructor(private medicalsuppliesService:MedicalsuppliesService, private httpC
     },
     error=>{
       console.log('Rrror',error);
-      alert('ไม่สามารถบันทึกได้ โปรดกรุณาใส่ข้อมูลให้ครบถ้วน');
+      alert('ไม่สามารถบันทึกได้ โปรดกรุณาใส่ข้อมูลอีกครั้ง');
     }
     );
   }

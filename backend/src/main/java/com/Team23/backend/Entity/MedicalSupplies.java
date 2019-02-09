@@ -17,17 +17,28 @@ import lombok.Data;
 
 @Entity
 @Data
-
 public class MedicalSupplies {
     @Id  
     @GeneratedValue(strategy= GenerationType.IDENTITY) 
     private Long medicalsuppliesId;
 
+    @Column(unique = true)
+    private String codeNumber;
+
+    @Column(unique = true)
+    private String modelNumber;
+
     @Pattern(regexp="[a-zA-Z]*|[ก-์]" ,message="medicalsuppliesName No have special character")
-    @Size(min=3,max=10,message="medicalsuppliesName should not have alphabet at less 3 alphabet and than 10 alphabet")
+    @Size(min=2,max=30,message="medicalsuppliesName should not have alphabet at less 2 alphabet and than 30 alphabet")
     @NotNull(message="medicalsuppliesName must not be null to be valid")
     @Column(unique = true)
     private String medicalsuppliesName;
+
+    @Size(min=2,max=30,message="medicalsuppliesName should not have alphabet at less 2 alphabet and than 30 alphabet")
+    private String brandName;
+
+    @Size(min=2,max=30,message="medicalsuppliesName should not have alphabet at less 2 alphabet and than 30 alphabet")
+    private String properties;
 
 
     @ManyToOne()    

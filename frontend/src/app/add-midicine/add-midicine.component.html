@@ -73,11 +73,15 @@
 </mat-card>
 
 <mat-card>
-  <!--
-<mat-form-field class="example-form-search">
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="ใส่คำค้นหา">
-</mat-form-field> 
--->
+
+   <mat-card ><h2 class="example-form">ค้นหาด้วยชื่อยา  <mat-icon matSuffix>search</mat-icon></h2>
+    <br>
+    <mat-form-field class="search">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="ใส่คำค้นหา">
+    </mat-form-field>
+
+  </mat-card>
+
 
 
 

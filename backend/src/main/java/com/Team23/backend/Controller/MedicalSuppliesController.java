@@ -47,38 +47,54 @@ public class MedicalSuppliesController {
 
 
     
-    @PostMapping("/MedicalSupplies/{medicalsuppliesName}/{medicalInstrumentName}/{useabilityName}")
-    public MedicalSupplies medicalSupplies(@PathVariable String medicalsuppliesName, @PathVariable String medicalInstrumentName, @PathVariable String useabilityName ){
-        MedicalSupplies medicalSupplies = new MedicalSupplies();
-        MedicalInstrument medicalInstrument = medicalInstrumentRepository.findByMedicalInstrumentName(medicalInstrumentName);
-        Useability useability =useabilityRepository.findByuseabilityName(useabilityName);
-
-        medicalSupplies.setMedicalsuppliesName(medicalsuppliesName);
-        medicalSupplies.setMedicalInstrument(medicalInstrument);
-        medicalSupplies.setUseability(useability);
-        System.out.println(medicalSupplies);
-        System.out.println(medicalInstrument);
-        System.out.println(useability);
-        return  medicalSuppliesRepository.save(medicalSupplies);
-    }
-    @PutMapping("/MedicalSupplies/{medicalsuppliesId}/{medicalsuppliesName}/{medicalInstrumentName}/{useabilityName}")
-    public MedicalSupplies updatemedicalSupplies(@PathVariable Long   medicalsuppliesId,     @PathVariable String medicalsuppliesName, 
-                                                 @PathVariable String medicalInstrumentName, @PathVariable String useabilityName ){
+    @PostMapping("/MedicalSupplies/{codeNumber}/{modelNumber}/{medicalsuppliesName}/{brandName}/{properties}/{medicalInstrumentName}/{useabilityName}")
+    public MedicalSupplies medicalSupplies(@PathVariable String codeNumber,           @PathVariable String modelNumber,
+                                           @PathVariable String medicalsuppliesName,  @PathVariable String brandName,
+                                           @PathVariable String properties,           @PathVariable String medicalInstrumentName, 
+                                           @PathVariable String useabilityName ){
 
         MedicalSupplies medicalSupplies = new MedicalSupplies();
         MedicalInstrument medicalInstrument = medicalInstrumentRepository.findByMedicalInstrumentName(medicalInstrumentName);
         Useability useability =useabilityRepository.findByuseabilityName(useabilityName);
 
-        medicalSupplies.setMedicalsuppliesId(medicalsuppliesId);                                     
+        medicalSupplies.setCodeNumber(codeNumber);
+        medicalSupplies.setModelNumber(modelNumber);
         medicalSupplies.setMedicalsuppliesName(medicalsuppliesName);
+        medicalSupplies.setBrandName(brandName);
+        medicalSupplies.setProperties(properties);
         medicalSupplies.setMedicalInstrument(medicalInstrument);
         medicalSupplies.setUseability(useability);
+
         System.out.println(medicalSupplies);
         System.out.println(medicalInstrument);
         System.out.println(useability);
-
         return  medicalSuppliesRepository.save(medicalSupplies);
     }
+
+    @PutMapping("/MedicalSupplies/{medicalsuppliesId}/{codeNumber}/{modelNumber}/{medicalsuppliesName}/{brandName}/{properties}/{medicalInstrumentName}/{useabilityName}")
+    public MedicalSupplies updatemedicalSupplies(@PathVariable String codeNumber,           @PathVariable String modelNumber,
+                                           @PathVariable String medicalsuppliesName,  @PathVariable String brandName,
+                                           @PathVariable String properties,           @PathVariable String medicalInstrumentName, 
+                                           @PathVariable String useabilityName,        @PathVariable Long   medicalsuppliesId ){
+
+        MedicalSupplies medicalSupplies = new MedicalSupplies();
+        MedicalInstrument medicalInstrument = medicalInstrumentRepository.findByMedicalInstrumentName(medicalInstrumentName);
+        Useability useability =useabilityRepository.findByuseabilityName(useabilityName);
+        medicalSupplies.setMedicalsuppliesId(medicalsuppliesId);  
+        medicalSupplies.setCodeNumber(codeNumber);
+        medicalSupplies.setModelNumber(modelNumber);
+        medicalSupplies.setMedicalsuppliesName(medicalsuppliesName);
+        medicalSupplies.setBrandName(brandName);
+        medicalSupplies.setProperties(properties);
+        medicalSupplies.setMedicalInstrument(medicalInstrument);
+        medicalSupplies.setUseability(useability);
+
+        System.out.println(medicalSupplies);
+        System.out.println(medicalInstrument);
+        System.out.println(useability);
+        return  medicalSuppliesRepository.save(medicalSupplies);
+    }
+    
 
 
 

@@ -2,13 +2,45 @@
   <h1 class="example-form">Medical Supplies</h1>
 </mat-card>
 <mat-card class="background-image-matcart">
-  <!-----------------------------------ชื่อเวชภัณฑ์----------------------------------------------->
+
+
+<!-----------------------------------รหัสเวชภัณฑ์----------------------------------------------->
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="view.codeNumber" name="codeNumber" placeholder="รหัสเวชภัณฑ์">
+    </mat-form-field>
+  </form>
+<!---------------------------------------------------------------------------------->
+  <!-----------------------------------หมายเลขรุ่น----------------------------------------------->
+  <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput [(ngModel)]="view.modelNumber" name="modelNumber" placeholder="หมายเลขรุ่น">
+      </mat-form-field>
+    </form>
+  <!---------------------------------------------------------------------------------->
+<!-----------------------------------ชื่อเวชภัณฑ์----------------------------------------------->
   <form class="example-form">
     <mat-form-field class="example-full-width">
       <input matInput [(ngModel)]="view.medicalSupplies" name="medicalSupplies" placeholder="ชื่อเวชภัณฑ์">
     </mat-form-field>
   </form>
   <!---------------------------------------------------------------------------------->
+<!-----------------------------------ชื่อแบรนด์----------------------------------------------->
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="view.brandName" name="brandName" placeholder="ชื่อแบรนด์">
+    </mat-form-field>
+  </form>
+  <!---------------------------------------------------------------------------------->
+
+<!-----------------------------------คุณสมบัติ----------------------------------------------->
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="view.properties" name="properties" placeholder="คุณสมบัติ">
+    </mat-form-field>
+  </form>
+  <!---------------------------------------------------------------------------------->
+
   <!--
 <mat-select [(ngModel)]="view.position" name="position" placeholder="ตำแหน่ง">
   <mat-option *ngFor="let position(นำค่าที่ได้มาใส่ position) of Position(ดึงมาจาก tyscrip)" [value]="(ชื่อจาก Position มาใส่ position)position.position(ชื่อจาก database)">
@@ -72,12 +104,39 @@
     <th mat-header-cell *matHeaderCellDef> No. </th>
     <td mat-cell *matCellDef="let element" > {{element.medicalsuppliesId}} </td>
   </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="codeNumber">
+      <th mat-header-cell *matHeaderCellDef> รหัสเวชภัณฑ์ </th>
+      <td mat-cell *matCellDef="let element"> {{element.codeNumber}} </td>
+    </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="medicalsuppliesName">
-    <th mat-header-cell *matHeaderCellDef> ชื่อเวชภัณฑ์ </th>
-    <td mat-cell *matCellDef="let element"> {{element.medicalsuppliesName}} </td>
-  </ng-container>
+      <th mat-header-cell *matHeaderCellDef> ชื่อเวชภัณฑ์ </th>
+      <td mat-cell *matCellDef="let element"> {{element.medicalsuppliesName}} </td>
+    </ng-container>
+
+  
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="brandName">
+      <th mat-header-cell *matHeaderCellDef> ชื่อแบรนด์ </th>
+      <td mat-cell *matCellDef="let element"> {{element.brandName}} </td>
+    </ng-container>
+
+      <!-- Name Column -->
+  <ng-container matColumnDef="modelNumber">
+      <th mat-header-cell *matHeaderCellDef> หมายเลขรุ่น </th>
+      <td mat-cell *matCellDef="let element"> {{element.modelNumber}} </td>
+    </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="properties">
+          <th mat-header-cell *matHeaderCellDef> คุณสมบัติ </th>
+          <td mat-cell *matCellDef="let element"> {{element.properties}} </td>
+        </ng-container>
+
+
 
   <!-- Weight Column -->
   <ng-container matColumnDef="medicalInstrument">

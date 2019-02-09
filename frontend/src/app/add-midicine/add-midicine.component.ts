@@ -4,11 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs/internal/Observable';
-import { MatDialog, MatDialogConfig } from "@angular/material";
+import { MatDialog, MatDialogConfig, MatTableDataSource } from "@angular/material";
 import { EditMidicineComponent } from '../edit-midicine/edit-midicine.component';
 import { MidicineService } from '../midicine.service';
 import { GoldcardService } from '../goldcard.service';
-export interface Drug{
+export interface DrugElement{
   drugId:number;
   typesOfDrugs:{
     typesOfDrugsName:string;
@@ -24,16 +24,17 @@ export interface Drug{
   }
   drugName:string;
   }
-  export class MatTableDataSource extends DataSource<any>{
+  // export class MatTableDataSource extends DataSource<any>{
   
-    constructor(private midicineService:MidicineService){
-      super();
-    }
-    connect(): Observable<Drug[]>{
-      return this.midicineService.getShow();
-    }
-    disconnect(){}
-  }
+  //   constructor(private midicineService:MidicineService){
+  //     super();
+  //   }
+  //   connect(): Observable<DrugElement[]>{
+  //     return this.midicineService.getShow();
+  //   }
+  //   disconnect(){}
+  // }
+
 @Component({
   selector: 'app-add-midicine',
   templateUrl: './add-midicine.component.html',
@@ -41,19 +42,21 @@ export interface Drug{
 })
 export class AddMidicineComponent implements OnInit {
   displayedColumns: string[] = ['drugId', 'drugName', 'typesOfDrugs','drugRegistration','typesOfDosageForms','disease',"actions"];
-  dataSource = new MatTableDataSource(this.midicineService);
+  filter : '';
   drug: Array<any>;//คืออะไร
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
+  dataSource = new MatTableDataSource<DrugElement>(this.drug);
   
 
-  // applyFilter(filterValue: string) {
-  //   this.newMethod(filterValue);
-  // }
-  // private newMethod(filterValue: string) {
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  applyFilter(filterValue: string) {
+    this.newMethod(filterValue);
+  }
+  private newMethod(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+ 
   Drug: Array<any>;
   TypesOfDrugs: Array<any>;
   DrugRegistration: Array<any>;
@@ -75,8 +78,9 @@ export class AddMidicineComponent implements OnInit {
     this.goldcardService.getDrug().subscribe(drug => {
       this.Drug = drug;
       console.log(this.Drug);
-      
+      this.dataSource.data=drug;
     });
+
     this.midicineService.getTypesOfDrugs().subscribe(typesOfDrugs => {
       this.TypesOfDrugs = typesOfDrugs;
       console.log(this.TypesOfDrugs);

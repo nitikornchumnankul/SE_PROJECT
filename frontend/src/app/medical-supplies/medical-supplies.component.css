@@ -33,7 +33,10 @@ table{
   background-image:url(../add-midicine/800px_COLOURBOX14939503.jpg);
 }
 .background-image-matcart{
-  background-image: url(../add-midicine/611581acc25175003f49451dabf67db2.jpg);
+  background-position: right center;
+  background-position: 60% 40%;
+ 
+  background-image: url(../medical-supplies/611581acc25175003f49451dabf67db2.jpg);
 }
 .button-background{
   background-color:#5DADE2 ;

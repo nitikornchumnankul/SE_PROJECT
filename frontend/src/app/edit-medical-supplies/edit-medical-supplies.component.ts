@@ -14,7 +14,11 @@ MedicalSupplies: Array<any>;
 MedicalInstrument:Array<any>
 Useability:Array<any>;
 view: any={
+  codeNumber:null,
+  modelNumber:null,
   medicalSupplies:null,
+  brandName:null,
+  properties:null,
   medicalInstrument:null,
   useability:null
 }
@@ -39,21 +43,34 @@ medicalsuppliesId=this.medicalsuppliesService.getIdMedicalSupplies();
   }
 onUpdate(){
     console.log(this.medicalsuppliesId);
-           this.httpClient.put('http://localhost:8080/MedicalSupplies/'+ this.medicalsuppliesId +'/'+ this.view.medicalSupplies + '/'+ this.view.medicalInstrument +'/'+ this.view.useability ,this.view)
-           .subscribe
-           (
-             data =>{
-             alert('อัพเดตเรียบร้อย');
-             console.log('Post Request is seccessful',data);
-             this.router.navigate(['/reload/medicalSupplies']);
-           },
-           error=>{
-             console.log('Rrror',error);
-             alert('ไม่สามารถบันทึกได้ โปรดกรุณาใส่ข้อมูลให้ครบถ้วน');
-           }
-           );
-           this.dialogRef.close();
-         }
+    console.log(this.view.codeNumber);
+    console.log(this.view.modelNumber);
+    console.log(this.view.medicalSupplies);
+    console.log(this.view.brandName);
+    console.log(this.view.properties);
+    console.log(this.view.medicalInstrument);
+    console.log(this.view.useability);
+    
+    this.httpClient.put('http://localhost:8080/MedicalSupplies/' +this.medicalsuppliesId+'/'+ this.view.codeNumber +  
+    '/'+ this.view.modelNumber + 
+    '/'+ this.view.medicalSupplies +
+    '/'+ this.view.brandName + 
+    '/'+ this.view.properties + 
+    '/'+ this.view.medicalInstrument +
+    '/'+ this.view.useability,this.view)
+    .subscribe
+    (
+      data =>{
+      alert('บันทึกเรียบร้อย');
+      console.log('Post Request is seccessful',data);
+      window.location.reload();
+    },
+    error=>{
+      console.log('Rrror',error);
+      alert('ไม่สามารถบันทึกได้ โปรดกรุณาใส่ข้อมูลอีกครั้ง');
+    }
+    );
+  }
 onCancel(){
 this.dialogRef.close();
 }
