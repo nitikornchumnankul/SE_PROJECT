@@ -8,6 +8,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+
 import lombok.*;
 import java.time.format.DateTimeFormatter;
 import java.time.*;
@@ -27,9 +29,12 @@ public class Member {
     @SequenceGenerator(name="Member_seq",sequenceName="Member_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Member_seq")   // Annotations Generate id เอง ตอน insert
     @Column(name="MEMBER_ID",unique = true, nullable = false)
+    @NotNull(message = "MemberID is Null")
     private @NonNull Long MemberId;
 
-    private @NonNull String memberName;
+    @NotNull(message = "memberName is null")
+    @Column(name = "memberName",unique = true)
+    private String memberName;
 
 
 }

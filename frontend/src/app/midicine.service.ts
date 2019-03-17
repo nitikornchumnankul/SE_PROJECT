@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; //ถ้า get  มีปัญหาเรียกตัวนี้
 
 import { Observable } from 'rxjs/Observable'
+import { Drug } from './add-midicine/add-midicine.component';
 
 @Injectable({
   providedIn: 'root'
@@ -32,10 +33,9 @@ export class MidicineService {
   getDisease():Observable <any>{
     return this.httpClient.get(this.API+'/Disease');
   }
-  
-  // getShow(): Observable<Drug[]>{
-  //   return this.httpClient.get<Drug[]>(this.serviceUrl);
-  // }
+  getShow(): Observable<Drug[]>{
+    return this.httpClient.get<Drug[]>(this.serviceUrl);
+  }
   
 
   getMidicine(editMidicine){

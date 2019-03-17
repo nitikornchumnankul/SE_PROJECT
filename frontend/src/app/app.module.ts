@@ -13,7 +13,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 import { HospitalRegisterComponent } from './hospital-register/hospital-register.component';
 import { GDCardComponent } from './gd-card/gd-card.component';
-
+import { PubliczComponent } from './publicz/publicz.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -61,11 +62,15 @@ import { AlertService } from './alert.service';
 import { UserviewComponent } from './userview/userview.component';
 import { EligibleDiseasesComponent } from './eligible-diseases/eligible-diseases.component';
 import { ReloadpageComponent } from './reloadpage/reloadpage.component';
-import { TreatmentHistoryComponent } from './treatment-history/treatment-history.component';
+import { TreatmentHistoryComponent,Thpass } from './treatment-history/treatment-history.component';
 import { AddMidicineComponent } from './add-midicine/add-midicine.component';
 import { EditMidicineComponent } from './edit-midicine/edit-midicine.component';
+import { AcceptToUserComponent,Sheet,Sheetq } from './accept-to-user/accept-to-user.component';
+import { DiseaseComponent,Success } from './disease/disease.component';
+import { CardComponent } from './card/card.component';
 import { MedicalSuppliesComponent } from './medical-supplies/medical-supplies.component';
 import { EditMedicalSuppliesComponent } from './edit-medical-supplies/edit-medical-supplies.component';
+import { AddTrainingComponent } from './add-training/add-training.component';
 
 @NgModule({
   declarations: [
@@ -85,14 +90,22 @@ import { EditMedicalSuppliesComponent } from './edit-medical-supplies/edit-medic
     AddMidicineComponent,
     EditMidicineComponent,
     GDCardComponent,
+    AcceptToUserComponent,
+    Sheet,
+    Sheetq,
+    Success,
+    Thpass,
+    DiseaseComponent,
+    CardComponent,
+    PubliczComponent,
     MedicalSuppliesComponent,
     EditMedicalSuppliesComponent,
+    AddTrainingComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
     MatAutocompleteModule,
         MatBadgeModule,
         MatBottomSheetModule,
@@ -129,6 +142,7 @@ import { EditMedicalSuppliesComponent } from './edit-medical-supplies/edit-medic
         MatTooltipModule,
         MatTreeModule,
         ReactiveFormsModule,
+        MatFormFieldModule,
         HttpClientModule,
             MatNativeDateModule,
             FormsModule
@@ -137,7 +151,7 @@ import { EditMedicalSuppliesComponent } from './edit-medical-supplies/edit-medic
     MatDialogModule
   ],
   providers: [AuthService, AuthGuard,Opensheet,GoldcardService,AlertService],
-  entryComponents: [SheetComponent,Opensheet,EditMidicineComponent,EditMedicalSuppliesComponent],
+  entryComponents: [SheetComponent,Opensheet,EditMidicineComponent,Sheet,Sheetq,Thpass,Success,EditMedicalSuppliesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

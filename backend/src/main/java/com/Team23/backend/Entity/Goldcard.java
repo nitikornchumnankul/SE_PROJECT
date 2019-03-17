@@ -11,6 +11,10 @@ import javax.persistence.OneToMany;
 import lombok.*;
 import java.time.format.DateTimeFormatter;
 import java.time.*;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import java.util.*;
 
@@ -29,7 +33,10 @@ public class Goldcard {
     @Column(name="GOLDCARD_ID",unique = true, nullable = false)
     private @NonNull Long goldcardId;
 
+    @Column(name = "goldcardName" ,unique = true)
     private @NonNull String goldcardName;
+
+    @Pattern(regexp = "^\\S.+")
     private @NonNull String detail;
 
     //--------------------------------------Hospital
@@ -43,7 +50,11 @@ public class Goldcard {
     private Officer officer;
 
     //-----------------------------------------Member
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Member.class)
-    @JoinColumn(name= "memberName", insertable = true)
-    private Member member;
+//    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Member.class)
+//    @JoinColumn(name= "memberName", insertable = true)
+//    private Member member;
+    //---------------------------------------RightRegistration
+    @ManyToOne(fetch = FetchType.EAGER , targetEntity = RightRegistration.class)
+    @JoinColumn(name = "username" ,insertable = true)
+    private  RightRegistration rightRegistration;
 }

@@ -25,20 +25,20 @@ public class EligibleDiseasesController {
 
         return EDR.findAll().stream().collect(Collectors.toList());
     }
-    @PostMapping("/checkuser")
-    public Officer findUserName(Officer user,@RequestBody Map<String,String> body) throws ChangeSetPersister.NotFoundException {
+    @PostMapping("/checkuser/{n}.{p}")
+    public Officer findUserName(Officer user,@PathVariable String n , @PathVariable String p) throws ChangeSetPersister.NotFoundException {
 
 
 
         try {
-            user = officerRepositoty.findByUserName(body.get("username"));
+            user = officerRepositoty.findByUserName(n);
         }
         catch (Exception err) {
             throw new ChangeSetPersister.NotFoundException();
         }
 
-        System.out.println(user.getPassWord().compareTo(body.get("password")));
-        if(user.getPassWord().compareTo(body.get("password")) != 0){
+        System.out.println(user.getPassWord().compareTo(p));
+        if(user.getPassWord().compareTo(p) != 0){
             //System.out.println("Not Password!");
             //return false;
             throw new ChangeSetPersister.NotFoundException();
@@ -63,9 +63,9 @@ public class EligibleDiseasesController {
         return documentWork;
     }
 
-    @PostMapping("/EligibleDiseases/add/{Diseases},{NumberDocument},{username}")
+    @PostMapping("/EligibleDiseases/add/{Diseases},{NumberDocument},{username},{Code}")
     public  EligibleDiseases newEligibleDiseases(EligibleDiseases eligibleDiseases,@PathVariable String Diseases, @PathVariable String NumberDocument
-    ,@PathVariable String username){
+    ,@PathVariable String username,@PathVariable String Code){
 
         Officer officers = officerRepositoty.findByUserName(username);
         Disease disease = DiseaseRepo.findByDiseaseName(Diseases);
@@ -76,7 +76,7 @@ public class EligibleDiseasesController {
         eligibleDiseases.setDisease(disease);
         eligibleDiseases.setDocumentWork(documentWork);
         eligibleDiseases.setOfficer(officers);
-
+        eligibleDiseases.setEligibleDiseasesCode(Code);
         return EDR.save(eligibleDiseases);
     }
 

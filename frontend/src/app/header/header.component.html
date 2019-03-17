@@ -1,18 +1,21 @@
 
 <mat-toolbar color="primary"
  *ngIf="isLoggedIn$ | async as isLoggedIn"
-             style="height:40px;padding:5px" >
+             style="height:40px;padding:5px">
 
 
   <!-- -->
 
   <span>
     <button mat-button  routerLink="EligibleDiseases">โรคที่มีสิทธิ์</button>
+    <button mat-button  routerLink="Card">ออกบัตร</button>
     <button mat-button  routerLink="TreatmentHistory">ประวัติการรักษาโรค</button>
     <button mat-button routerLink="hospitalRegister" >ลงทะเบียนโรงพยาบาล</button>
     <button mat-button routerLink="addMidicine" >ลงทะเบียนยา</button>
     <button mat-button routerLink="medicalSupplies" >ลงทะเบียนเวชภัณฑ์</button>
     <button mat-button  routerLink="GDCard">รายละเอียดผู้ถือบัตร</button>
+    <button mat-button  routerLink="Disease">เพิ่มโรคในไทย</button>
+    <button mat-button  routerLink="PubZ">ประชาสัมพันธ์</button>
   </span>
 
   <!-- -->
@@ -25,12 +28,15 @@
   <span class="example-spacer"></span>
   <span>
     <button mat-icon-button [matMenuTriggerFor]="menu2">
-      <mat-icon>more_vert</mat-icon>
+      <mat-icon >more_vert</mat-icon>
     </button>
 
     <mat-menu #menu2="matMenu">
-      <button mat-menu-item routerLink="goldCardRegister" *ngIf="isLoggedIn" >Register(GoldCard)</button>
-    </mat-menu>
+        <button mat-menu-item routerLink="goldCardRegister" *ngIf="isLoggedIn" >Register(GoldCard)</button>
+        <button mat-menu-item  routerLink="AcceptToUser">ยืนยันสิทธิ์</button>
+        <button mat-menu-item routerLink="addTraining"  >บันทึกการอบรม</button>
+
+      </mat-menu>
 
     </span>
 <span>

@@ -51,7 +51,40 @@ getOfficer(): Observable<any> {
   getMember(): Observable<any> {
     return this.http.get('//localhost:8080/Member');
   }
- 
-
-
+  getAcceptToUser(): Observable<any> {
+    return this.http.get('//localhost:8080/AcceptToUser');
+  }
+ getStatus(): Observable<any> {
+      return this.http.get('//localhost:8080/Status');
+  }
+  getAccepted(): Observable<any> {
+      return this.http.get('//localhost:8080/Accepted');
+    }
+ getTypeDisease(): Observable<any> {
+    return this.http.get('//localhost:8080/TypeDisease');
+  }
+ getPeopleDisease(): Observable<any> {
+    return this.http.get('//localhost:8080/PeopleDisease');
+  }
+  getPassAcceptToUser(): Observable<any> {
+    return this.http.get('//localhost:8080/PassAcceptToUser');
+  }
+  getExpenses(): Observable<any> {
+    return this.http.get('//localhost:8080/Expenses');
+  }
+  getTypeOfPublicz(): Observable<any> {
+    return this.http.get('//localhost:8080/TypeOfPublicz');
+  }
+  getTraining(): Observable<any> {
+    return this.http.get('//localhost:8080/listtraining');
+  }
+  getLecturer(): Observable<any> {
+    return this.http.get('//localhost:8080/listlecturer');
+  }
+  getTypeTraining(): Observable<any> {
+    return this.http.get('//localhost:8080/listtypetraining');
+  }
+ getCard(): Observable<any> {
+    return this.http.get('//localhost:8080/Card');
+  }
 }

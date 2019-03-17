@@ -13,6 +13,8 @@
 body {
   font-family: Roboto, Arial, sans-serif;
   margin: 0;
+  background-image: url(https://acrobatant.com/wp-content/uploads/2014/12/shutterstock_146147567-1.jpg);
+  background-size: 100%;
 }
 
 .basic-container {
@@ -30,6 +32,16 @@ border-radius: 5px;
 box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
+.cardaccept{
+border-radius: 5px;
+  width: 1200px;
+  margin: 2em auto;
+  margin-top : 0px;
+  padding-top : 10px;
+  padding : 10px 50px 30px 50px;
+  background: rgba(255, 255, 255,0.9);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
 .cardlog{
   text-align:center;
   margin : 500;
@@ -43,11 +55,6 @@ box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   color: #000;
 }
 
-body{
-  background-image: url(https://acrobatant.com/wp-content/uploads/2014/12/shutterstock_146147567-1.jpg);
-  background-size: 100%;
-}
-
 .version-info {
   font-size: 8pt;
   float: right;
@@ -56,9 +63,7 @@ body{
 .hidden {
   visibility: hidden;
 }
-.nonhidden{
 
-}
 .popupsuccess{
   padding : 5px;
   color:white;
@@ -90,7 +95,6 @@ background-color: orange;
 
 
 /*Hospital SubSystem style */
-@import url('https://fonts.googleapis.com/css?family=Bai+Jamjuree');
 .headerhospital {
   background-color: #f1f1f1;
   padding : 30px;
@@ -104,8 +108,6 @@ background-color: orange;
   top: 50%;
   left: 50%;
  border-radius: 20px
-
-
 
 }
 
@@ -226,3 +228,22 @@ animation: slide-out-right 10s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite
 	-webkit-animation-direction: alternate;
 }
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.trainingstyle{
+  background-color: #f1f1f1;
+  padding : 30px;
+  text-align: left;
+  text-shadow: 2px 2px 5px rgb(0, 171, 235);
+  font-family: 'Bai Jamjuree', sans-serif;
+  border-left: 6px solid rgb(0, 171, 235);
+  border-right: 6px solid rgb(0, 171, 235);
+  border-top: 6px solid white;
+  font-size: 30px;
+  top: 50%;
+  left: 50%;
+ border-radius: 20px
+  
+}
